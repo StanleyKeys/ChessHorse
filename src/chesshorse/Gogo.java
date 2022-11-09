@@ -4,16 +4,22 @@
  */
 package chesshorse;
 
+import java.util.Scanner;
+
 public class Gogo {
     public static void main(String[] args) {
-        GameBoard board = new GameBoard(8);
-        Horse konik = new Horse(board.getCell(1, 7));
+        System.out.print("Введите размер доски: ");
+        Scanner userEnter = new Scanner(System.in);
+        int num = userEnter.nextInt();
+        GameBoard board = new GameBoard(num);
+        Horse plotva = new Horse(board.getCell(1, num-1));
         int countJump=0;
-         while(konik.goJump(board)) {
+         while(plotva.goJump(board)) {
              countJump++;
          }
         board.printBoard();
-        System.out.println(countJump);
+        System.out.println("Количество ходов: " + countJump);
+        //System.out.println(countJump);
     }
     
 }
